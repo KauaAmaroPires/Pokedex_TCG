@@ -1,0 +1,805 @@
+body {
+    /* border: 4px solid #000; */
+    background: #313131
+}
+
+/* Barra do cabeçalho */
+
+.navbar {
+    width: 100%;
+    background: #F00;
+    border: 4px solid #000;
+    box-sizing: border-box;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0;
+}
+
+.logoBar1 {
+    width: 48px;
+    height: 48px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    position: absolute;
+    left: 20px;
+}
+
+.bar1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 60%;
+}
+
+.bar1 li {
+    flex: 1;
+    text-align: center;
+}
+
+.bar1 a {
+    text-decoration: none;
+    color: #FFF;
+    -webkit-text-stroke: 1px #000;
+    font-family: "Albert Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.bar1 a:hover {
+    transform: scale(1.1);
+    color: #FFD700;
+}
+
+/* Loja de cartas */
+
+.Cartas {
+    color: #FFF;
+    -webkit-text-stroke: 1px #000;
+    font-family: "Albert Sans", sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    margin-top: 30px;
+    max-width: 1311px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Cartas h3 {
+    text-align: left;
+    margin: 0 0 10px 20px;
+}
+
+.tableBase {
+    border-radius: 25px;
+    border: 4px solid #000;
+    background: #313131;
+    width: 100%;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tableBase2 {
+    border-radius: 25px;
+    border: 4px solid #000;
+    background: #404040;
+    display: flex;
+    align-items: center;
+    height: 95px;
+    padding: 0 30px;
+}
+
+.coins {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.coinIconTable {
+    width: 72px;
+    height: 72px;
+    aspect-ratio: 1/1;
+}
+
+.valueCoinTable {
+    color: #FED714;
+    -webkit-text-stroke: 1px #000;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.cards-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.cards {
+    display: flex;
+    gap: 40px;
+    flex: 1;
+    justify-content: center;
+}
+
+.timerStock {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    -webkit-text-stroke: 1px #000;
+    line-height: 1.2;
+}
+
+.timerStock span {
+    font-size: 36px;
+    color: #FED714;
+}
+
+.miticalCard,
+.supremeCard {
+    position: relative;
+    width: 203px;
+    height: 280px;
+    border-radius: 11px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 15px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    cursor: pointer;
+}
+
+.miticalCard:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 15px 25px rgba(255, 215, 0, 0.6);
+    filter: brightness(1.1);
+}
+
+.supremeCard:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 15px 25px rgba(255, 0, 0, 0.6);
+    filter: brightness(1.1);
+}
+
+.miticalCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 11px;
+    padding: 4px;
+    background: linear-gradient(
+        135deg,
+        #0000ff,
+        #00ffff,
+        #00ff00,
+        #fffa00,
+        #ff0000,
+        #ff00ff,
+        #0000ff
+    );
+    mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.supremeCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 11px;
+    padding: 4px;
+    background: linear-gradient(135deg, #ff0000, #000, #ff0000, #000);
+    mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.miticalCard .text,
+.supremeCard .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(47deg);
+    transform-origin: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    white-space: nowrap;
+    text-align: center;
+    pointer-events: none;
+}
+
+.miticalCard .value,
+.supremeCard .value {
+    color: #FED714;
+    -webkit-text-stroke: 1px #000;
+    font-size: 24px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.cardStockCount {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 8px;
+}
+
+/* Pokedéx - Index */
+
+.Pokedex {
+    color: #FFF;
+    -webkit-text-stroke: 1px #000;
+    font-family: "Albert Sans", sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    max-width: 1311px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.Pokedex h3 {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.indexBackground {
+    border-radius: 25px;
+    border: 4px solid #000;
+    background: #FFF;
+    overflow: hidden;
+}
+
+.indexFrameUP {
+    border-radius: 25px 25px 0 0;
+    border-bottom: 4px solid #000;
+    background: #F00;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 20px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.searchIcon {
+    width: 28px;
+    height: 28px;
+}
+
+.searchArea {
+    width: 220px;
+    height: 28px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background: #FFF;
+    color: #000;
+    font-size: 15px;
+    font-weight: 600;
+    padding-left: 8px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.searchArea::placeholder {
+    color: #000;
+    opacity: 1;
+}
+
+.searchArea:focus {
+    box-shadow: 0 0 8px #ff0000;
+}
+
+.indexPokeballIcon {
+    width: 38px;
+    height: 38px;
+}
+
+.index {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    padding: 15px;
+    justify-items: center;
+}
+
+.personagens {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 45.66%, #999 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.personagens:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff0000;
+}
+
+.personagens .name {
+    color: #000;
+    font-size: 14px;
+    font-weight: 900;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.indexFrameDown {
+    border-radius: 0 0 25px 25px;
+    border-top: 4px solid #000;
+    background: #F00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+}
+
+.poke-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.poke-wrapper-img {
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Resgate de códigos */
+
+.Codigos {
+    color: #FFF;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+    font-family: "Albert Sans", sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    max-width: 1311px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.Codigos h3 {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.codeBackground {
+    width: 100%;
+    max-width: 1311px;
+    min-height: 82px;
+    border-radius: 25px;
+    border: 4px solid #000;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 25px;
+    box-sizing: border-box;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.leftGroup {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    min-width: 0;
+}
+
+.codeText {
+    font-size: clamp(16px, 2vw, 20px);
+    flex-shrink: 0;
+    white-space: nowrap;
+    background: linear-gradient(90deg, #FED714 0%, #FB0 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.typeCodeArea {
+    flex: 1;
+    min-width: 150px;
+    height: 62px;
+    border-radius: 11px;
+    border: 4px solid #000;
+    background: linear-gradient(90deg, #F00 0%, #C00 50%, #B30000 75%, #900 100%);
+    color: #000;
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+}
+
+.typeCodeArea::placeholder {
+    color: #000;
+    opacity: 1;
+}
+
+.rightGroup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.coinIconCode {
+    width: clamp(45px, 6vw, 72px);
+    height: auto;
+}
+
+
+.codeTextIcon {
+    font-size: clamp(16px, 2vw, 20px);
+    background: linear-gradient(90deg, #FED714 0%, #FB0 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* rodapé com github */
+
+.rodape {
+    width: 100%;
+    height: auto;
+    min-height: 56px;
+    border: 4px solid #000;
+    background: #F00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+.github {
+    width: clamp(32px, 6vw, 45px);
+    height: auto;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.github:hover {
+    transform: scale(1.1);
+}
+
+.pack-opening {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    z-index: 9999;
+    text-align: center;
+}
+
+.opening-text {
+    font-family: "Albert Sans", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    animation: pulse 1s infinite alternate;
+}
+
+.card-drop {
+    font-family: "Albert Sans", sans-serif;
+}
+
+.card-drop img {
+    width: 200px;
+    height: 200px;
+    image-rendering: pixelated;
+}
+
+.card-drop .name {
+    font-size: 24px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.card-drop .type {
+    font-size: 16px;
+    color: #FED714;
+}
+
+.click-next {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Animações / Tablets grandes / telas médias */
+
+@media (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .logoBar1 {
+        position: static;
+    }
+    .bar1 {
+        width: 100%;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 900px) {
+    .cards-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .timerStock {
+        font-size: 24px;
+    }
+    .timerStock span {
+        font-size: 28px;
+    }
+}
+
+@keyframes pulse {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 1200px) {
+    .Cartas, .Pokedex, .Codigos {
+        max-width: 95%;
+    }
+    .cards {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .codeBackground {
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+        padding: 15px;
+    }
+    .typeCodeArea {
+        width: 100%;
+    }
+    .rightGroup {
+        justify-content: center;
+    }
+    .index {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+/* Tablets pequenos / modo retrato */
+
+@media (max-width: 900px) {
+    .bar1 {
+        width: 90%;
+    }
+    .cards-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .timerStock {
+        font-size: 22px;
+    }
+    .timerStock span {
+        font-size: 26px;
+    }
+    .index {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .codeText {
+        font-size: 18px;
+    }
+    .codeBackground {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+    .leftGroup {
+        flex-direction: column;
+        width: 100%;
+    }
+    .typeCodeArea {
+        width: 90%;
+    }
+    .rightGroup {
+        justify-content: center;
+    }
+}
+
+/* Celulares grandes */
+
+@media (max-width: 700px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .logoBar1 {
+        position: static;
+    }
+    .bar1 {
+        width: 100%;
+        justify-content: space-around;
+    }
+    .bar1 a {
+        font-size: 16px;
+    }
+    .index {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .personagens {
+        width: 80px;
+        height: 80px;
+    }
+    .searchArea {
+        width: 150px;
+        height: 26px;
+    }
+    .typeCodeArea {
+        width: 100%;
+        height: 50px;
+    }
+    .codeText {
+        font-size: 16px;
+    }
+    .coinIconCode {
+        width: 50px;
+        height: 50px;
+    }
+    .Cartas h3,
+    .Pokedex h3,
+    .Codigos h3 {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+}
+
+/* Celulares pequenos */
+
+@media (max-width: 500px) {
+    .bar1 {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .cards-section {
+        padding: 0 10px;
+    }
+    .miticalCard,
+    .supremeCard {
+        width: 160px;
+        height: 220px;
+    }
+    .miticalCard .text,
+    .supremeCard .text {
+        font-size: 18px;
+    }
+    .miticalCard .value,
+    .supremeCard .value {
+        font-size: 18px;
+    }
+    .index {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    .indexFrameUP {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    .searchArea {
+        width: 100%;
+    }
+    .codeBackground {
+        padding: 10px;
+        gap: 8px;
+    }
+    .leftGroup, .rightGroup {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .typeCodeArea {
+        width: 90%;
+        height: 45px;
+        font-size: 16px;
+    }
+    .coinIconCode {
+        width: 40px;
+        height: 40px;
+    }
+    .codeTextIcon {
+        font-size: 18px;
+    }
+    .rodape {
+        width: 100%;
+        height: 50px;
+    }
+    .github {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 800px) {
+    .codeBackground {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        gap: 15px;
+    }
+    .leftGroup {
+        flex-direction: column;
+        width: 100%;
+    }
+    .typeCodeArea {
+        width: 90%;
+    }
+    .rightGroup {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .codeText {
+        font-size: 16px;
+        text-align: center;
+    }
+    .codeTextIcon {
+        font-size: 16px;
+    }
+}
