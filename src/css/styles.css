@@ -90,7 +90,7 @@ body {
 }
 
 .tableBase2 {
-    border-radius: 25px;
+    border-radius: 20px;
     border: 4px solid #000;
     background: #404040;
     display: flex;
@@ -281,7 +281,7 @@ body {
 }
 
 .indexFrameUP {
-    border-radius: 25px 25px 0 0;
+    border-radius: 17px 17px 0 0;
     border-bottom: 4px solid #000;
     background: #F00;
     display: flex;
@@ -363,7 +363,7 @@ body {
 }
 
 .indexFrameDown {
-    border-radius: 0 0 25px 25px;
+    border-radius: 0 0 17px 17px;
     border-top: 4px solid #000;
     background: #F00;
     display: flex;
