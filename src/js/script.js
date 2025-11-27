@@ -68,7 +68,6 @@ function updateCardCounts() {
 };
 
 function nextMidnightTimestamp() {
-	const now = new Date();
 	const next = new Date();
 	next.setHours(24, 0, 0, 0);
 	return next.getTime();
@@ -150,7 +149,7 @@ async function openPack(type) {
 
 	await delay(1000);
 
-	const pokemons = await getRandomPokemons(5);
+	const pokemons = await getRandomPokemons(5, type);
 	overlay.innerHTML = "";
 
 	let i = 0;
@@ -165,10 +164,12 @@ async function openPack(type) {
 		};
 
 		const p = pokemons[i];
+		let name = p.name.toUpperCase();
+		let shiny = name.includes("[SHINY]");
 		overlay.innerHTML = `
 		<div class="card-drop">
 			<img src="${p.sprites?.front_default}" alt="${p.name}" />
-			<div class="name">${p.name.toUpperCase()}</div>
+			<div class="${shiny ? "nameShiny" : "name"}">${shiny ? `✨ ${name} ✨` : name}</div>
 			<div class="type">${p.types.map(t => t.type.name).join(", ")}</div>
 			<p class="click-next">✨ Clique para próxima carta</p>
 		</div>`;
@@ -180,11 +181,27 @@ async function openPack(type) {
 	};
 }
 
-async function getRandomPokemons(qtd) {
+function summonShiny(type) {
+	const chance = {
+		teste: 0.5, // 50%
+		mitical: 0.0005, // 0.05%
+		supreme: 0.001 // 0.1%
+	};
+  	return Math.random() < chance[type];
+};
+
+async function getRandomPokemons(qtd, type) {
+	// type = "teste"; // Aplicar 50% de drop
 	const promises = [];
 	for (let i = 0; i < qtd; i++) {
 		const id = Math.floor(Math.random() * maxId) + 1;
-		promises.push(fetch(`${api}${id}`).then(r => r.json()));
+		const res = await fetch(`${api}${id}`).then(r => r.json());
+		if (summonShiny(type)) {
+			res.name = `[SHINY] ${res.name}`;
+			res.id = res.id += 0.5;
+			res.sprites.front_default = res.sprites.front_shiny;
+		};
+		promises.push(res);
 	};
 	return Promise.all(promises);
 };
@@ -199,9 +216,23 @@ function addToPokedex(pokemon) {
 	saveData();
 };
 
+function isShiny(n) {
+	return n % 1 === 0.5;
+};
+
 async function loadSavedPokemons() {
 	if (!save.pokemons.length) return;
-	const promises = save.pokemons.map(id => fetch(`${api}${id}`).then(r => r.json()));
+	const promises = save.pokemons.map(async (x) => {
+		let shiny = isShiny(x);
+		let id = Math.floor(x);
+		let res = await fetch(`${api}${id}`).then(r => r.json());
+		if (shiny) {
+			res.name = `[SHINY] ${res.name}`;
+			res.id = res.id += 0.5;
+			res.sprites.front_default = res.sprites.front_shiny;
+		};
+		return res;
+	});
 	const result = await Promise.all(promises);
 	result.forEach(p => pokedexMap.set(p.id, p));
 	renderPokedex();
@@ -238,7 +269,7 @@ function renderPokedex(filter = "") {
 		});
 	};
 
-	counterDisplay.textContent = `${pokedexMap.size}/${maxId}`;
+	counterDisplay.textContent = `${pokedexMap.size}/${maxId * 2}`;
 }
 
 searchInput.addEventListener("input", e => {

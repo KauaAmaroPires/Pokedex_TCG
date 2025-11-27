@@ -233,6 +233,12 @@ body {
     pointer-events: none;
 }
 
+.miticalCard .text .chance,
+.supremeCard .text .chance {
+    font-size: 19px;
+    color: #da0e0e;
+}
+
 .miticalCard .value,
 .supremeCard .value {
     color: #FED714;
@@ -533,6 +539,7 @@ body {
 
 .card-drop {
     font-family: "Albert Sans", sans-serif;
+    font-weight: bold;
 }
 
 .card-drop img {
@@ -545,6 +552,13 @@ body {
     font-size: 24px;
     margin-top: 10px;
     text-transform: uppercase;
+}
+
+.card-drop .nameShiny {
+    font-size: 24px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    color: #da0e0e;
 }
 
 .card-drop .type {
