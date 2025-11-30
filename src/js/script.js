@@ -184,8 +184,8 @@ async function openPack(type) {
 function summonShiny(type) {
 	const chance = {
 		teste: 0.5, // 50%
-		mitical: 0.0005, // 0.05%
-		supreme: 0.001 // 0.1%
+		mitical: 0.005, // 0.50%
+		supreme: 0.0025 // 0.25%
 	};
   	return Math.random() < chance[type];
 };
